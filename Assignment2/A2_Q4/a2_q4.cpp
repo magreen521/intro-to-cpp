@@ -28,12 +28,19 @@ using namespace std;
 // }
 
 //4.5 Write a single sum function capable of handling an arbitrary number of integers
-int sum(const int arr[], length){
-	sum = 0;
-	for(int i = 0; i < length; i++){
-		sum += arr[i];
-	}
-	return sum;
+// int sum(const int arr[], const int length){
+// 	int sum = 0;
+// 	for(int i = 0; i < length; i++){
+// 		sum += arr[i];
+// 	}
+// 	return sum;
+// }
+
+//4.6 Rewrite function from 4.5 using recursion instead of a loop. Pointer arithmetic may help.
+int sum(const int arr[], const int length){
+	cout << arr << "\n";
+	return length == 0 ? 0 : *(arr) + sum (arr + 1, length - 1); //my modified version of the answer key's solution
+	//return length == 1 ? *(arr): *(arr+length-1) + sum(arr,length-1); //my original solution
 }
 
 int main(){
@@ -48,7 +55,11 @@ int main(){
 	//cout << sum(3,5,7) << "\n";
 	//cout << sum(1,2,3,4);
 
-	//4.5 Testing function for arbitrary number of integers
+	//4.5 and 4.6 Testing function for arbitrary number of integers
+	int arr[] = {2, 6, 8, 6, 7, 10};
+	//https://www.geeksforgeeks.org/how-to-find-size-of-array-in-cc-without-using-sizeof-operator/
+	int length = *(&arr + 1) - arr;
+	cout << sum(arr, length);
 
 	return 0;
 }
